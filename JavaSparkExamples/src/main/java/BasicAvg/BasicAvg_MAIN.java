@@ -13,7 +13,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 
 
 
-public final class BasicAvg {
+public final class BasicAvg_MAIN {
 	
 	
 	/**
