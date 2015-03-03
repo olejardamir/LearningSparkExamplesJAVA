@@ -3,6 +3,9 @@
  * @author: Damir Olejar, on March 02 2015. 
  */
 
+package BasicMapToDouble;
+
+
 import java.util.Arrays;
 import org.apache.commons.lang.StringUtils;
 import org.apache.spark.api.java.JavaRDD;
@@ -16,6 +19,7 @@ public class BasicMapToDouble {
 		JavaRDD<Integer> rdd = sc.parallelize(Arrays.asList(1, 2, 3, 4));
 		JavaDoubleRDD result = getResult(rdd);
 		System.out.println(StringUtils.join(result.collect(), ","));
+		sc.stop();
 	}
 	
 	private static JavaDoubleRDD getResult(JavaRDD<Integer> rdd){
