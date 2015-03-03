@@ -9,7 +9,6 @@ package BasicAvgMapPartitions;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function2;
