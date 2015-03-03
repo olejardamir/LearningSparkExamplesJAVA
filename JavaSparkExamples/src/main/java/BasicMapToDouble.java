@@ -3,30 +3,28 @@
  * @author: Damir Olejar, on March 02 2015. 
  */
 
-package BasicMapThenFilter;
-
 import java.util.Arrays;
 import org.apache.commons.lang.StringUtils;
 import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.api.java.JavaDoubleRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.function.Function;
+import org.apache.spark.api.java.function.DoubleFunction;
 
-public class BasicMapThenFilter {
+public class BasicMapToDouble {
 	public static void main(String[] args) throws Exception {
-		JavaSparkContext sc = new JavaSparkContext("local", "basicmapfilter", System.getenv("SPARK_HOME"), System.getenv("JARS"));
+		JavaSparkContext sc = new JavaSparkContext("local", "basicmaptodouble", System.getenv("SPARK_HOME"), System.getenv("JARS"));
 		JavaRDD<Integer> rdd = sc.parallelize(Arrays.asList(1, 2, 3, 4));
-		JavaRDD<Integer> result = getSquared(rdd);		
+		JavaDoubleRDD result = getResult(rdd);
 		System.out.println(StringUtils.join(result.collect(), ","));
-		sc.stop();
 	}
 	
-	
-	private static JavaRDD<Integer> getSquared(JavaRDD<Integer> rdd){
-		JavaRDD<Integer> squared = rdd.map(new Function<Integer, Integer>() {
-			public Integer call(Integer x) {
-				return x * x;
+	private static JavaDoubleRDD getResult(JavaRDD<Integer> rdd){
+		JavaDoubleRDD result = rdd.mapToDouble(new DoubleFunction<Integer>() {
+			public double call(Integer x) {
+				double y = (double) x;
+				return y * y;
 			}
 		});
-		return squared;
+		return result;
 	}
 }

@@ -1,3 +1,8 @@
+/*
+ * Refactored Java Spark examples for easer understanding, to accompany "Learning spark lightning-fast big data analytics - O'Reilly Media"
+ * @author: Damir Olejar, on March 02 2015. 
+ */
+
 package BasicMap;
 
 import java.util.Arrays;
